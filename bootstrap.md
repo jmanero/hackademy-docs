@@ -9,22 +9,25 @@ http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip
  1. Unzip
  1. Run putty.exe
 
-## Download SSH key
+## Download the bootstrap SSH key
  * Putty: http://jmanero.m.dyn.io/pub/start.ppk
  * SSH: http://jmanero.m.dyn.io/pub/start.pem
 
 ## Login (SSH)
 
-    ssh -i /path/to/key ubuntu@start.m.dyn.io
+    ssh -i /path/to/start.pem ubuntu@start.m.dyn.io
 
-### Create an SSH key-pair
+## Create an SSH key-pair
 
-    ec2-create-keypair --hide-tags {YOUR NAME} > $HOME/.ssh/id_rsa
+ 1. Create the key-pair: ```ec2-create-keypair --hide-tags {YOUR NAME} > $HOME/.ssh/id_rsa```
+ 2. Copy/Paste the output into a file **on your laptop**
+ 3. Change the permissions to 600: ```chmod 600 start.pem```
 
-### Create your "workstation"
+## Create your "workstation"
 
     knife ec2 server create -I ami-1d1e7774 -f t1.micro -S {YOUR NAME}
 
+Output:
 ```text
 [DEPRECATION] Defaulting to json library for json parsing. Please consider using multi_json library for the greatest performance/flexibility.
 Instance ID: i-1d811e7f
