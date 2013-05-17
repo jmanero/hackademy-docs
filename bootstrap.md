@@ -10,8 +10,8 @@ http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip
  1. Run putty.exe
 
 ## Download the bootstrap SSH key
- * Putty: http://jmanero.m.dyn.io/pub/start.ppk
- * SSH: http://jmanero.m.dyn.io/pub/start.pem
+ * Putty: http://jmanero.m.dyn.io:8081/pub/start.ppk
+ * SSH: http://jmanero.m.dyn.io:8081/pub/start.pem
 
 ## Login (SSH)
 
