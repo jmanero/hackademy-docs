@@ -49,3 +49,10 @@ Waiting for sshd.........done
 Bootstrapping Chef on ec2-54-234-143-113.compute-1.amazonaws.com
 ERROR: Errno::ENOENT: No such file or directory - /etc/chef/validation.pem
 ```
+
+## Log into your "workstation"
+**First, log out of start.m.dyn.io:** `exit`
+
+    ssh -i /path/to/{YOUR NAME}.pem ubuntu@{Public DNS Name}
+    
+Use the key you saved above, and the FQDN displayed in the `knife ec2` output to log into your new worksataion
