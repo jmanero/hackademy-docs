@@ -1,21 +1,53 @@
 Boostrapping
 ============
-
-## Windoze Only: Install Putty
- 1. Download
-
-http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip
-
- 1. Unzip
- 1. Run putty.exe
-
-## Download the bootstrap SSH key
+## Download Private Keys
+#### Start key
+Use this key to log into `ubuntu@start.m.dyn.io`. THat is, user `ubuntu`, and host `start.m.dyn.io`
  * Putty: http://jmanero.m.dyn.io:8081/pub/start.ppk
  * SSH: http://jmanero.m.dyn.io:8081/pub/start.pem
 
-## Login (SSH)
+#### Personal Key
+Use this key to log into EC2 instances that you create using your username. Everyone has
+a username comprised of their first initial and last name. e.g John Manero's user name is `jmanero`.
+ * Substitute your username: http://jmanero.m.dyn.io:8081/pub/USERNAME
+ * The file has no extension (e.g .ppk or .pem)
 
-    ssh -i /path/to/start.pem ubuntu@start.m.dyn.io
+## Using SSH
+* Set the correct permissions for the keys you downloaded. The following will set the correct permissions
+for both the start key and your persional key. Substitute the correct username, or ommit either file if it
+does not apply.
+
+```chmod 600 start.pem USERNAME```
+
+* Use the `ssh` command to log in to the start node. This is an EC2 instance that will be shared by all
+teams to create their own EC2 instances using the `kinfe` utility.
+
+```ssh -i path/to/key ubuntu@start.m.dyn.io```
+
+`-i`, above, is called a flag. It tells the `ssh` program that the string following it is the path to a
+private key that should be used to authenticate with the remote host. The last string in the command
+is a combination of the username to log in with, and hostname of the remote system, seperated by the `@` symbol.
+
+## Windows Only
+#### Install Putty
+ 1. Download http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip
+ 2. Unzip
+ 3. Run `PUTTY.EXE`
+ 4. Enter the username and hostname of the EC2 instance that you would like to log into (e.g. username@myhost.foo.com)
+ 4. Generate a Putty key if you have not already (below)
+ 5. In the left-hand pane of the Putty login window, navigate to `Connection` -> `SSH` -> `Auth`
+ 6. In the `Auth` configuration window, select your Putty key (ppk) file.
+
+#### Generate your Putty Key (.ppk)
+ 1. In the putty directory that you unziped, run `PUTTYGEN.EXE`
+ 2. Click the `Load` button, and select your personal key file.
+ 3. Click `Save Private Key`
+
+## Creating EC2 instances
+#### Login (SSH) to the start node
+The 
+
+    ssh -i start.pem ubuntu@start.m.dyn.io
 
 ## Create an SSH key-pair
 
