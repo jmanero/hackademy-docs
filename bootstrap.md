@@ -45,19 +45,10 @@ is a combination of the username to log in with, and hostname of the remote syst
 
 ## Creating EC2 instances
 #### Login (SSH) to the start node
-The 
 
     ssh -i start.pem ubuntu@start.m.dyn.io
-
-## Create an SSH key-pair
-
- 1. Create the key-pair: ```ec2-create-keypair --hide-tags {YOUR NAME} > $HOME/.ssh/id_rsa```
- 2. Copy/Paste the output into a file **on your laptop**
- 3. Change the permissions to 600: ```chmod 600 start.pem```
-
-## Create your "workstation"
-
     knife ec2 server create -I ami-1d1e7774 -f t1.micro -S {YOUR NAME}
+    exit
 
 Output:
 ```text
@@ -81,10 +72,4 @@ Waiting for sshd.........done
 Bootstrapping Chef on ec2-54-234-143-113.compute-1.amazonaws.com
 ERROR: Errno::ENOENT: No such file or directory - /etc/chef/validation.pem
 ```
-
-## Log into your "workstation"
-**First, log out of start.m.dyn.io:** `exit`
-
-    ssh -i /path/to/{YOUR NAME}.pem ubuntu@{Public DNS Name}
-    
-Use the key you saved above, and the FQDN displayed in the `knife ec2` output to log into your new worksataion
+The Error at the end is OK!
