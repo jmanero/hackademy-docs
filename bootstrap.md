@@ -1,14 +1,8 @@
 Boostrapping
 ============
 ## Download Private Keys
-#### Start key
-Use this key to log into `ubuntu@start.m.dyn.io`. THat is, user `ubuntu`, and host `start.m.dyn.io`
- * Putty: http://jmanero.m.dyn.io:8081/pub/start.ppk
- * SSH: http://jmanero.m.dyn.io:8081/pub/start.pem
-
-#### Personal Key
-Use this key to log into EC2 instances that you create using your username. Everyone has
-a username comprised of their first initial and last name. e.g John Manero's user name is `jmanero`.
+Use this key to log into EC2 instances that you create. Everyone has a username comprised of
+their first initial and last name. e.g John Manero's user name is `jmanero`.
  * Substitute your username: http://jmanero.m.dyn.io:8081/pub/USERNAME
  * The file has no extension (e.g .ppk or .pem)
 
@@ -44,11 +38,8 @@ is a combination of the username to log in with, and hostname of the remote syst
  3. Click `Save Private Key`
 
 ## Creating EC2 instances
-#### Login (SSH) to the start node
 
-    ssh -i start.pem ubuntu@start.m.dyn.io
-    knife ec2 server create -I ami-1d1e7774 -f t1.micro -S {YOUR NAME}
-    exit
+```knife ec2 server create -I ami-f75b329e -f t1.micro -S {YOUR NAME}```
 
 Output:
 ```text
