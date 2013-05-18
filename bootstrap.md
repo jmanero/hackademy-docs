@@ -7,16 +7,13 @@ their first initial and last name. e.g John Manero's user name is `jmanero`.
  * The file has no extension (e.g .ppk or .pem)
 
 ## Using SSH
-* Set the correct permissions for the keys you downloaded. The following will set the correct permissions
-for both the start key and your persional key. Substitute the correct username, or ommit either file if it
-does not apply.
+Set the correct permissions for the key you downloaded. Substitute your username.
 
-```chmod 600 start.pem USERNAME```
+```chmod 600 USERNAME```
 
-* Use the `ssh` command to log in to the start node. This is an EC2 instance that will be shared by all
-teams to create their own EC2 instances using the `kinfe` utility.
+Use the `ssh` command to log in to remote servers.
 
-```ssh -i path/to/key ubuntu@start.m.dyn.io```
+```ssh -i path/to/key USERNAME@HOSTNAME.m.dyn.io```
 
 `-i`, above, is called a flag. It tells the `ssh` program that the string following it is the path to a
 private key that should be used to authenticate with the remote host. The last string in the command
@@ -39,7 +36,7 @@ is a combination of the username to log in with, and hostname of the remote syst
 
 ## Creating EC2 instances
 
-```knife ec2 server create -I ami-f75b329e -f t1.micro -S {YOUR NAME}```
+```knife ec2 server create -I ami-f75b329e -f t1.micro -S hackademy```
 
 Output:
 ```text
